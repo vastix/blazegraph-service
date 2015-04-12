@@ -1,3 +1,4 @@
-= Vert.x Blazegraph Service
+Vert.x Blazegraph Service
+=========================
 
 This service provides an asynchronous interface around Blazegraph.
