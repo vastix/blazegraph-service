@@ -1,0 +1,8 @@
+{
+  "main": "name.bpdp.blazegraph.BlazegraphServiceVerticle",
+  "options": {
+    "config": {
+      "address": "vertx.blazegraph"
+    }
+  }
+}

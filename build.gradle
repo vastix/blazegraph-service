@@ -1,0 +1,67 @@
+buildscript {
+	repositories { jcenter() }
+	dependencies {
+		classpath	'org.asciidoctor:asciidoctor-gradle-plugin:1.5.2'
+					// asciidoc gradle plugin
+					// http://asciidoctor.org/docs/asciidoctor-gradle-plugin/
+    }
+}
+
+apply plugin: 'java'
+// asciidoc - for documentaton
+// sourceDir	
+// 		where the asciidoc sources are. Type: File. Default: src/asciidoc.
+//
+// sourceDocumentNames	
+// 		an override to process multiple source files, which may be a subset 
+//		of all files available in ${sourceDir}. Type: FileCollection. 
+//		Defaults to all files in ${sourceDir}.
+apply plugin: 'org.asciidoctor.convert'
+
+def vertxVersion = '3.0.0-milestone4'
+version = '1.0.0-SNAPSHOT'
+
+sourceCompatibility = 1.8 
+targetCompatibility = 1.8 
+
+if (!JavaVersion.current().java8Compatible) {
+	throw new IllegalStateException('''A Haiku:
+										|	This needs Java 8,
+										|	You are using something else,
+										|	Refresh. Try again.'''.stripMargin())
+}
+
+repositories {
+	mavenCentral()
+	maven {
+		url = 'http://oss.sonatype.org/content/repositories/snapshots/'
+	}
+	jcenter()
+	mavenCentral()
+	mavenLocal()
+	maven {url "http://www.systap.com/maven/releases"}
+}
+
+dependencies {
+	compile 'io.vertx:vertx-core:' + vertxVersion
+	compile 'io.vertx:vertx-apex:' + vertxVersion
+	compile 'io.vertx:vertx-codetrans:' + vertxVersion
+	compile 'io.vertx:vertx-codegen:' + vertxVersion
+	compile 'io.vertx:vertx-docgen:' + vertxVersion
+	compile 'io.vertx:vertx-service-proxy:' + vertxVersion
+	compile 'io.vertx:vertx-service-factory:' + vertxVersion
+	compile 'com.bigdata:bigdata:1.5.1'
+	compile 'io.vertx:vertx-unit:' + vertxVersion
+	testCompile 'junit:junit:4.12'
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.3'
+}
+
+test {
+	testLogging.showStandardStreams = true
+	testLogging {
+		exceptionFormat = 'full'
+	}
+}
