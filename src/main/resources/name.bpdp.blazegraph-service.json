@@ -1,5 +1,5 @@
 {
-  "main": "name.bpdp.blazegraph.BlazegraphServiceVerticle",
+  "main": "name.bpdp.vertx.blazegraph.BlazegraphServiceVerticle",
   "options": {
     "config": {
       "address": "vertx.blazegraph"

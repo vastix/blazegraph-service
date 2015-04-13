@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 Bambang Purnomosidi - Kipo project
+ * Copyright (c) 2015 Bambang Purnomosidi - Tartu  project
  * -----------------------------------------------------
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -20,9 +20,9 @@
  * or Blueprints API graph
  *
  */
-@Document(fileName = "index.adoc")
-@GenModule(name = "blazegraph")
-package name.bpdp.blazegraph;
+//@Document(fileName = "index.adoc")
+@GenModule(name = "blazegraph-service", groupPackageName="name.bpdp")
+package name.bpdp.vertx.blazegraph;
 
 import io.vertx.codegen.annotations.GenModule;
 import io.vertx.docgen.Document;

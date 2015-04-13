@@ -1,24 +1,14 @@
 buildscript {
 	repositories { jcenter() }
 	dependencies {
-		classpath	'org.asciidoctor:asciidoctor-gradle-plugin:1.5.2'
-					// asciidoc gradle plugin
-					// http://asciidoctor.org/docs/asciidoctor-gradle-plugin/
     }
 }
 
 apply plugin: 'java'
-// asciidoc - for documentaton
-// sourceDir	
-// 		where the asciidoc sources are. Type: File. Default: src/asciidoc.
-//
-// sourceDocumentNames	
-// 		an override to process multiple source files, which may be a subset 
-//		of all files available in ${sourceDir}. Type: FileCollection. 
-//		Defaults to all files in ${sourceDir}.
-apply plugin: 'org.asciidoctor.convert'
+apply plugin: 'maven-publish'
 
 def vertxVersion = '3.0.0-milestone4'
+//def vertxVersion = '3.0.0-SNAPSHOT'
 version = '1.0.0-SNAPSHOT'
 
 sourceCompatibility = 1.8 
@@ -31,11 +21,20 @@ if (!JavaVersion.current().java8Compatible) {
 										|	Refresh. Try again.'''.stripMargin())
 }
 
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'name.bpdp.vertx'
+            artifactId 'blazegraph-service'
+            version '1.0.0-SNAPSHOT'
+            from components.java
+        }
+    }
+}
+
 repositories {
 	mavenCentral()
-	maven {
-		url = 'http://oss.sonatype.org/content/repositories/snapshots/'
-	}
+	maven { url 'http://oss.sonatype.org/content/repositories/snapshots/' }
 	jcenter()
 	mavenCentral()
 	mavenLocal()
@@ -65,3 +64,37 @@ test {
 		exceptionFormat = 'full'
 	}
 }
+
+def generatedSrcPath="$buildDir/generated-src"
+def generatedSrcDir = file(generatedSrcPath)
+
+sourceSets {
+	main {
+		java.srcDirs += generatedSrcDir
+		output.dir(builtBy: 'generateServiceProxy', generatedSrcPath)
+	}
+}
+
+task generateServiceProxy(type: JavaCompile, description: 'Generates EBServiceProxies') {
+	source = sourceSets.main.java
+	classpath = configurations.compile
+	destinationDir = generatedSrcDir
+	options.compilerArgs = [
+		"-proc:only",
+		"-processor", "io.vertx.codegen.CodeGenProcessor",
+		"-AoutputDirectory=$generatedSrcPath"
+	]
+}
+
+compileJava.dependsOn generateServiceProxy
+compileJava {
+    //enable compilation in a separate daemon process
+    options.fork = true
+	options.compilerArgs << '-Xdoclint:none'
+
+}
+
+clean {
+	delete += generatedSrcDir
+}
+
