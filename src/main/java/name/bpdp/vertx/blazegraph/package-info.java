@@ -20,9 +20,7 @@
  * or Blueprints API graph
  *
  */
-//@Document(fileName = "index.adoc")
 @GenModule(name = "blazegraph-service", groupPackageName="name.bpdp")
 package name.bpdp.vertx.blazegraph;
 
 import io.vertx.codegen.annotations.GenModule;
-import io.vertx.docgen.Document;
