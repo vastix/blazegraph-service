@@ -1,5 +1,9 @@
 package name.bpdp.vertx.blazegraph;
 
+import io.vertx.core.AsyncResult;
+import io.vertx.core.Handler;
+import io.vertx.core.json.JsonObject;
+
 import io.vertx.core.Vertx;
 import io.vertx.serviceproxy.ProxyHelper;
 
@@ -13,20 +17,18 @@ import name.bpdp.vertx.blazegraph.impl.BlazegraphServiceImpl;
 @ProxyGen
 public interface BlazegraphService {
 
-    // A couple of factory methods to create an instance and a proxy
-
-	static BlazegraphService create(Vertx vertx) {
+	static BlazegraphService create(JsonObject config) {
 		try {
-			return new BlazegraphServiceImpl(vertx);
+			return new BlazegraphServiceImpl();
 		} catch (Exception e) {
 			return null; 
 		}
 	}
 
-
     static BlazegraphService createProxy(Vertx vertx, String address) {
       return ProxyHelper.createProxy(BlazegraphService.class, vertx, address);
     }
+
 
     // Actual service operations here...
 

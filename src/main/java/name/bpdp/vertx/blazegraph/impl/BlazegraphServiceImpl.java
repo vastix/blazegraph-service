@@ -20,7 +20,7 @@ public class BlazegraphServiceImpl implements BlazegraphService {
 
     // A couple of factory methods to create an instance and a proxy
 
-	public BlazegraphServiceImpl(Vertx vertx) throws Exception {
+	public BlazegraphServiceImpl() throws Exception {
 
 		Properties blazeProp;
 
@@ -56,7 +56,5 @@ public class BlazegraphServiceImpl implements BlazegraphService {
 
 		return p;
 	}
-
-
 
 }

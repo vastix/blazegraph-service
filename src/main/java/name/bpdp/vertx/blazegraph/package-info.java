@@ -20,7 +20,8 @@
  * or Blueprints API graph
  *
  */
-@GenModule(name = "blazegraph-service", groupPackageName="name.bpdp")
+//@GenModule(name = "blazegraph-service", groupPackageName="name.bpdp")
+@GenModule(name = "blazegraph-service", groupPackageName="name.bpdp.vertx")
 package name.bpdp.vertx.blazegraph;
 
 import io.vertx.codegen.annotations.GenModule;

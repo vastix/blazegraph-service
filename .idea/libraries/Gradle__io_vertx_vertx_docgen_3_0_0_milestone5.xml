@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: io.vertx:vertx-docgen:3.0.0-milestone5">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.vertx/vertx-docgen/3.0.0-milestone5/2f43964552b04b461446be400bbb3c4cf8eddb7/vertx-docgen-3.0.0-milestone5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.vertx/vertx-docgen/3.0.0-milestone5/28509e8936ec9cab544183e2419c3be709909591/vertx-docgen-3.0.0-milestone5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -18,6 +18,7 @@ package name.bpdp.vertx.blazegraph;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.serviceproxy.ProxyHelper;
+import io.vertx.core.Future;
 
 //import name.bpdp.vertx.blazegraph.BlazegraphService;
 
@@ -25,9 +26,9 @@ import io.vertx.core.*;
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.impl.LoggerFactory;
+import io.vertx.core.logging.LoggerFactory;
 
-import name.bpdp.vertx.blazegraph.BlazegraphService;
+//import name.bpdp.vertx.blazegraph.BlazegraphService;
 
 /**
  * A verticle that starts an instance of a Blazegraph service
@@ -35,22 +36,21 @@ import name.bpdp.vertx.blazegraph.BlazegraphService;
  */
 public class BlazegraphServiceVerticle extends AbstractVerticle {
 
-	protected BlazegraphService service;
+	public final static String ADDRESS = "vertx.blazegraph";
 
-	@Override
-	public void start() throws Exception {
+	private BlazegraphService service;
 
-		service = BlazegraphService.create(vertx);
-
-		// Start it
-		//service.start();
-
-		//ProxyHelper.registerService(BlazegraphServiceVerticle.class, vertx, service, address);
+    @Override
+    public void start(Future<Void> startFuture) throws Exception {
+		service = BlazegraphService.create(config());
+		String address = config().getString("address", ADDRESS);
+		ProxyHelper.registerService(BlazegraphService.class, vertx, service, address);
+		startFuture.complete();
 	}
 
 	@Override
-	public void stop() throws Exception {
-
-	}
+	public void stop(Future<Void> stopFuture) throws Exception {
+		stopFuture.complete();
+	}    
 
 }
