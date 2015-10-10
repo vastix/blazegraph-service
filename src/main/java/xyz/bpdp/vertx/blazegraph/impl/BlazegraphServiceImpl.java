@@ -1,8 +1,8 @@
-package name.bpdp.vertx.blazegraph.impl;
+package xyz.bpdp.vertx.blazegraph.impl;
 
 import io.vertx.core.Vertx;
 import io.vertx.serviceproxy.ProxyHelper;
-import name.bpdp.vertx.blazegraph.BlazegraphService;
+import xyz.bpdp.vertx.blazegraph.BlazegraphService;
 
 import java.io.FileNotFoundException;
 import java.util.Properties;

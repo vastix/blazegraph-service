@@ -1,4 +1,4 @@
-package name.bpdp.vertx.blazegraph;
+package xyz.bpdp.vertx.blazegraph;
 
 import io.vertx.codetrans.annotations.CodeTranslate;
 import io.vertx.core.Vertx;
@@ -17,7 +17,7 @@ import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.DeploymentOptions;
 
-import name.bpdp.vertx.blazegraph.BlazegraphServiceVerticle;
+import xyz.bpdp.vertx.blazegraph.BlazegraphServiceVerticle;
 
 @RunWith(VertxUnitRunner.class)
 public class BlazegraphServiceTest {
@@ -27,10 +27,10 @@ public class BlazegraphServiceTest {
 	@Before
 	public void before(TestContext context) {
 
-		JsonObject config = new JsonObject().put("address", "tartu.blazegraph");
+		JsonObject config = new JsonObject().put("address", "vastix.blazegraph");
 		DeploymentOptions depOptions = new DeploymentOptions().setConfig(config);
 
-		vertx.deployVerticle("service:name.bpdp.blazegraph-service", depOptions, res -> {
+		vertx.deployVerticle("service:xyz.bpdp.blazegraph-service", depOptions, res -> {
 			if (res.succeeded()) {
 				System.out.println("Start service - succeed");
 			} else {
@@ -56,6 +56,5 @@ public class BlazegraphServiceTest {
 		String s = "value2";
 		context.assertEquals("value2", s);
 	}
-
 
 }

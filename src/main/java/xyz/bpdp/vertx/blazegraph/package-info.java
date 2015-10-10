@@ -21,7 +21,7 @@
  *
  */
 //@GenModule(name = "blazegraph-service", groupPackageName="name.bpdp")
-@GenModule(name = "blazegraph-service", groupPackageName="name.bpdp.vertx")
-package name.bpdp.vertx.blazegraph;
+@ModuleGen(name = "blazegraph-service", groupPackage="xyz.bpdp.vertx")
+package xyz.bpdp.vertx.blazegraph;
 
-import io.vertx.codegen.annotations.GenModule;
+import io.vertx.codegen.annotations.ModuleGen;

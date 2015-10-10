@@ -14,13 +14,13 @@
  * You may elect to redistribute this code under either of these licenses.
  */
 
-package name.bpdp.vertx.blazegraph;
+package xyz.bpdp.vertx.blazegraph;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.serviceproxy.ProxyHelper;
 import io.vertx.core.Future;
 
-//import name.bpdp.vertx.blazegraph.BlazegraphService;
+//import xyz.bpdp.vertx.blazegraph.BlazegraphService;
 
 import io.vertx.core.*;
 import io.vertx.core.Future;
@@ -28,7 +28,7 @@ import io.vertx.core.json.JsonObject;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
 
-//import name.bpdp.vertx.blazegraph.BlazegraphService;
+//import xyz.bpdp.vertx.blazegraph.BlazegraphService;
 
 /**
  * A verticle that starts an instance of a Blazegraph service

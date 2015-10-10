@@ -1,4 +1,4 @@
-package name.bpdp.vertx.blazegraph;
+package xyz.bpdp.vertx.blazegraph;
 
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
@@ -12,7 +12,7 @@ import io.vertx.codegen.annotations.ProxyGen;
 import io.vertx.codegen.annotations.ProxyIgnore;
 import io.vertx.codegen.annotations.VertxGen;
 
-import name.bpdp.vertx.blazegraph.impl.BlazegraphServiceImpl;
+import xyz.bpdp.vertx.blazegraph.impl.BlazegraphServiceImpl;
 
 @ProxyGen
 public interface BlazegraphService {
